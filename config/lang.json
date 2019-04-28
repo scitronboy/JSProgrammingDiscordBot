@@ -1,0 +1,25 @@
+{
+    "cmd": {
+        "prefix": [
+            "!!"
+        ]
+    },
+    "commands": {
+        "welcome": ["welcome"],
+        "kill": ["kill"],
+        "joke": ["joke"],
+        "selfDestruct": ["die","destroy","selfdestruct","suicide"],
+        "wiki": ["wiki","factcheck","yourwrong","lookup","google"]
+    },
+    "log": {
+        "login": "Logged in as '{USER_TAG}'!",
+        "connectedServers": "Connected to {SERVER_COUNT} servers!",
+        "startupComplete": "Startup complete.",
+        "clientError": "The Discord client WebSocket encountered a connection error.",
+        "dblServerCountPosted": "Server count posted to Discord Bot List!",
+        "dblError": "An error occured with Discord Bot List.",
+        "loginFailed": "Login failed. Please check that you've placed the correct Discord bot token in the config file.",
+        "serverConnected": "'{SERVER_NAME}' ({SERVER_ID}) connected! There are now {SERVER_COUNT} connected servers.",
+        "serverDisconnected": "'{SERVER_NAME}' ({SERVER_ID}) disconnected. There are now {SERVER_COUNT} connected servers.",
+    }
+}

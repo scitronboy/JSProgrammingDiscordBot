@@ -1,0 +1,19 @@
+{
+    "token": "NTcxNzQyMzgzNzg4NTIzNTQy.XMSKmw.0FsDIEBvVkZHaN6jfpuRzEEvAJg",
+    "regions": [
+        "Africa",
+        "America",
+        "Antarctica",
+        "Arctic",
+        "Asia",
+        "Atlantic",
+        "Australia",
+        "Europe",
+        "Indian",
+        "Pacific"
+    ],
+    "discordBotList": {
+        "enabled": false,
+        "token": "NTcxNzQyMzgzNzg4NTIzNTQy.XMSKmw.0FsDIEBvVkZHaN6jfpuRzEEvAJg"
+    }
+}

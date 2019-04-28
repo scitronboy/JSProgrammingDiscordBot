@@ -1,0 +1,48 @@
+{
+    "name": "friend-time",
+    "version": "1.0.0",
+    "description": "Automatically convert times to your friends time zones!",
+    "main": "app.js",
+    "scripts": {
+        "start": "pm2 start process.json",
+        "dev": "nodemon app.js"
+    },
+    "keywords": [
+        "bot",
+        "chat",
+        "chatbot",
+        "clock",
+        "convert",
+        "date",
+        "discord",
+        "friend",
+        "friendtime",
+        "local",
+        "time",
+        "timezone",
+        "world",
+        "zone"
+    ],
+    "author": "Kevin Novak",
+    "license": "MIT",
+    "dependencies": {
+        "dblapi.js": "2.3.0",
+        "discord.js": "11.4.2",
+        "lowdb": "1.0.0",
+        "mkdirp": "0.5.1",
+        "moment-timezone": "0.5.23",
+        "pm2": "^3.4.1",
+        "request": "^2.88.0"
+    },
+    "devDependencies": {
+        "nodemon": "^1.18.10"
+    },
+    "homepage": "https://github.com/KevinNovak/Friend-Time#readme",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/KevinNovak/Friend-Time.git"
+    },
+    "bugs": {
+        "url": "https://github.com/KevinNovak/Friend-Time/issues"
+    }
+}
