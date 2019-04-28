@@ -3,22 +3,25 @@ const path = require('path');
 const dirname = require('path').dirname;
 const mkdirp = require('mkdirp');
 
-function getFullPath(shortPath) {
-    return path.join(__dirname, shortPath);
-}
 
-function createIfNotExists(filePath, data) {
-    var folder = dirname(filePath);
-    mkdirp.sync(folder);
-    try {
-        fs.writeFileSync(filePath, data, { flag: 'wx' });
-    } catch (error) {
-        // File exists, this is fine
-        return;
+module.exports =  class DataSystem {
+    constructor(props) {
+        this.data_file = path.join(__dirname, props.data_file);
+        try {
+            this.data = JSON.parse(fs.readFileSync(this.data_file, {encoding: 'utf-8'}));
+        } catch (e) {
+            console.error(e);
+        }
     }
-}
+    saveData(){
+        fs.writeFileSync(this.data_file, JSON.stringify(this.data), 'utf8');
+    }
+    getItem(key){
+        return this.data[key];
+    }
+    setItem(key,value){
+        this.data[key] = value;
+        this.saveData();
+    }
 
-module.exports = {
-    getFullPath,
-    createIfNotExists
 };

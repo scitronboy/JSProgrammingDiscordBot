@@ -1,12 +1,17 @@
 const Discord = require('discord.js');
 const DBL = require('dblapi.js');
-const usersRepo = require('./repos/usersRepo');
 const config = require('./config/config.json');
 const lang = require('./config/lang.json');
-const commands = require('./config/commands.js').commands;
+const commands = require('./services/commandService.js').commands;
 const utils = require('./utils/botutils.js');
 const client = new Discord.Client();
 const request = require('request');
+
+const DataSystem = require('./utils/fileUtils');
+
+let data = new DataSystem({
+    data_file: '../data/data.json',
+});
 
 var acceptMessages = false;
 var lastJavaSucks = 0;
@@ -37,7 +42,6 @@ client.on('ready', () => {
     console.log(lang.log.login.replace('{USER_TAG}', userTag));
 
     var serverIds = getConnectedServerIds();
-    usersRepo.connectServers(serverIds);
 
     var serverCount = serverIds.length;
     updateConnectedServers(serverCount);
@@ -72,11 +76,10 @@ client.on('message', msg => {
         commands.sendHelp(msg);
         return;
     }
-    commands[commandName](msg,command.args.slice(1),client);
+    commands[commandName](msg,command.args.slice(1),client,command.sudo);
 });
 
 client.on('guildCreate', guild => {
-    usersRepo.connectServer(guild.id);
     var serverCount = getConnectedServerIds().length;
     updateConnectedServers(serverCount);
     console.log(

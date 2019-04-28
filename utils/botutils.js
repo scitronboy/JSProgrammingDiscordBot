@@ -14,9 +14,20 @@ function isCommandMsg(msg) {
 
 function format(msg) {
     const msgSplit = msg.content.split(" ");
-    return {
-        prefix: msgSplit.shift(),
-        args: msgSplit,
+    if(msgSplit[1] === "sudo"){
+        const prefix = msgSplit.shift();
+        msgSplit.shift();
+        return {
+            sudo: true,
+            prefix: prefix,
+            args: msgSplit,
+        }
+    } else {
+        return {
+            sudo: false,
+            prefix: msgSplit.shift(),
+            args: msgSplit,
+        }
     }
 }
 function getCommand(str){
