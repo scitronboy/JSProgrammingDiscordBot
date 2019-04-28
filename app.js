@@ -62,7 +62,7 @@ client.on('message', msg => {
         return;
     }
     if(!utils.isCommandMsg(msg)){ /* is a command */
-        if(msg.content.toLowerCase().includes("java") &&  Date.now() - lastJavaSucks > 600){
+        if(msg.content.toLowerCase().includes("java") &&  Date.now() - lastJavaSucks > 600000){
             lastJavaSucks = Date.now();
             msg.channel.send(`Hey ${msg.author}...`);
             setTimeout(() => msg.channel.send(`Did you know...`), 1500);
@@ -75,6 +75,10 @@ client.on('message', msg => {
     if(!commandName){
         commands.sendHelp(msg);
         return;
+    }
+    if(!utils.permissionCheck(commandName,msg)){
+       msg.channel.send("Your are not authorized to administer this command");
+       return;
     }
     commands[commandName](msg,command.args.slice(1),client,command.sudo);
 });

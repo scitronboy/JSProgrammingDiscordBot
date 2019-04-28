@@ -5,28 +5,103 @@
     ]
   },
   "commands": {
-    "welcome": [
-      "welcome"
-    ],
-    "kill": [
-      "kill"
-    ],
-    "joke": [
-      "joke"
-    ],
-    "selfDestruct": [
-      "die",
-      "destroy",
-      "selfdestruct",
-      "suicide"
-    ],
-    "wiki": [
-      "wiki",
-      "factcheck",
-      "yourwrong",
-      "lookup",
-      "google"
-    ]
+    "welcome": {
+      "name": "welcome",
+      "args": [
+        "person"
+      ],
+      "description": "Welcomes a new user to the room with a message",
+      "shortcuts": [
+        "welcome"
+      ],
+      "ignore": false,
+      "permissions": ["all"]
+    },
+    "status": {
+      "name": "status",
+      "args": [
+      ],
+      "description": "Displays bot status",
+      "shortcuts": [
+        "status"
+      ],
+      "ignore": false,
+      "permissions": ["all"]
+    },
+    "mdn": {
+      "name": "mdn",
+      "args": [
+        "query"
+      ],
+      "description": "Searches for query on MDN",
+      "shortcuts": [
+        "mdn"
+      ],
+      "ignore": false,
+      "permissions": ["all"]
+    },
+    "help": {
+      "name": "help",
+      "args": [],
+      "description": "Lists commands",
+      "shortcuts": [
+        "help"
+      ],
+      "ignore": false,
+      "permissions": ["all"]
+    },
+    "kill": {
+      "name": "kill",
+      "args": [
+        "person"
+      ],
+      "description": "",
+      "shortcuts": [
+        "kill"
+      ],
+      "ignore": false,
+      "permissions": ["all"]
+    },
+    "joke": {
+      "name": "joke",
+      "args": [],
+      "description": "Sends a joke",
+      "shortcuts": [
+        "joke"
+      ],
+      "ignore": false,
+      "permissions": ["all"]
+    },
+    "selfDestruct": {
+      "name": "suicide",
+      "args": [],
+      "description": "Ends the process.",
+      "shortcuts": [
+        "die",
+        "destroy",
+        "selfdestruct",
+        "suicide",
+        "just_do_it"
+      ],
+      "ignore": false,
+      "permissions": ["admin"]
+    },
+    "wiki": {
+      "name": "wiki",
+      "args": [
+        "query"
+      ],
+      "description": "Searches for `query` on Wikipedia and sends link",
+      "shortcuts": [
+        "wiki",
+        "factcheck",
+        "yourwrong",
+        "lookup",
+        "google"
+      ],
+      "ignore": false,
+      "permissions": ["all"]
+    }
   },
   "log": {
     "login": "Logged in as '{USER_TAG}'!",

@@ -1,4 +1,6 @@
 const lang = require('../config/lang.json');
+const config = require('../config/config.json');
+
 
 function isCommand(str) {
     return isCommandPrefix(str.split(" ")[0].toLowerCase());
@@ -12,9 +14,21 @@ function isCommandMsg(msg) {
     return isCommand(msg.content)
 }
 
+function permissionCheck(commandName, msg) {
+    if (lang.commands[commandName].permissions[0] === "all") {
+        return true
+    }
+    for (let permissionsKey of lang.commands[commandName].permissions) {
+        if (config.users_groups[permissionsKey].includes(msg.author.username.toLowerCase())) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function format(msg) {
     const msgSplit = msg.content.split(" ");
-    if(msgSplit[1] === "sudo"){
+    if (msgSplit[1] === "sudo") {
         const prefix = msgSplit.shift();
         msgSplit.shift();
         return {
@@ -30,18 +44,21 @@ function format(msg) {
         }
     }
 }
-function getCommand(str){
+
+function getCommand(str) {
     for (const cmd of Object.keys(lang.commands)) {
-       if(lang.commands[cmd].includes(str)){
-          return cmd;
-       }
+        if (lang.commands[cmd].shortcuts.includes(str)) {
+            return cmd;
+        }
     }
     return false;
 }
+
 module.exports = {
     isCommand,
     isCommandMsg,
     isCommandPrefix,
     format,
-    getCommand
+    getCommand,
+    permissionCheck
 };

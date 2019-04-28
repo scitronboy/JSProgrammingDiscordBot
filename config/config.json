@@ -1,5 +1,7 @@
 {
-    "admins": ["jbis","@01101010","klauss"],
+    "users_groups":{
+        "admin": ["jbis","01101010","klauss"]
+    },
     "token": "NTcxNzQyMzgzNzg4NTIzNTQy.XMSKmw.0FsDIEBvVkZHaN6jfpuRzEEvAJg",
     "regions": [
         "Africa",
