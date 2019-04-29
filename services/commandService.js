@@ -25,9 +25,13 @@ const commandService = {
         request('https://www.google.com/search?q=' + args.join("%20") + "%20site:developer.mozilla.org", (err, res, body) => {
             try {
                 const $ = cheerio.load(body);
-                msg.channel.send($('.r').find('a').attr('href').replace('/url?q=', '').replace(/&sa=.*/, ''));
+                const url = $('.r').find('a').attr('href').replace('/url?q=', '').replace(/&sa=.*/, '');
+                if(!url.match(/^https:\/\/developer\.mozilla.org\/.*$/)){
+                    throw new Error('Invalid url ' + url);
+                }
+                msg.channel.send();
             } catch (e) {
-                msg.channel.send('An error occured with the request. Are you fucking with me?');
+                msg.channel.send('An error occurred with the request. Are you fucking with me?');
                 console.error(e);
             }
         });
