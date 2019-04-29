@@ -11,11 +11,11 @@ function unmuteUser(userId) {
     }
 }
 
-function shutupUser(userId, durationSeconds) {
+function shutupUser(userId, durationMinutes) {
     // Remove all previous instances of same user from array:
     unmuteUser(userId);
     // Push userId, and mute end time to arrayy:
-    mutedUsers.push([userId, Date.now() + durationSeconds*1000]);
+    mutedUsers.push([userId, Date.now() + parseInt(durationMinutes)*1000*60]);
 }
 
 function userMuted(userId) {

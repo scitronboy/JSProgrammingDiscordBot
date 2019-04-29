@@ -65,9 +65,9 @@
     "shutup": {
       "name": "shutup",
       "args": [
-        "person", "durationSeconds"
+        "person", "durationMinutes"
       ],
-      "description": "Shut <person> up for <durationSeconds> seconds.",
+      "description": "Shut <person> up for <durationMinutes> minutes.",
       "shortcuts": [
         "shutup", "mute"
       ],
