@@ -81,6 +81,8 @@
         "destroy",
         "selfdestruct",
         "suicide",
+        "reboot",
+        "restart",
         "just_do_it"
       ],
       "ignore": false,

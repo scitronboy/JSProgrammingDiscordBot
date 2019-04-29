@@ -3,6 +3,12 @@ const config = require('../config/config');
 const cheerio = require('cheerio');
 const utils = require('../utils/botutils');
 const lang = require('../config/lang.json');
+const DataSystem = require('./utils/fileUtils');
+
+let data = new DataSystem({
+    data_file: '../data/data.json',
+});
+
 Object.defineProperty(Array.prototype, 'random', {
     value: function () {
         return this[Math.floor(Math.random() * this.length)];
@@ -72,6 +78,17 @@ const commandService = {
         }
         const person = await client.fetchUser(args[0].match(/[0-9]+/));
         msg.channel.send(`\`sudo rm -rf /\` <@${person.id}>`);
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        today = mm + '/' + dd + '/' + yyyy;
+        const old_nicname = person.nickname;
+        await msg.guild.members.get(person.id).setNickname('Died ' +  today);
+        setTimeout(async () => {
+            await msg.guild.members.get(person.id).setNickname(old_nicname);
+        },300000);
+
     },
     joke: (msg, args, client, sudo) => {
         if (Math.random() <= 0.1 && args !== "bypass") {
@@ -121,7 +138,7 @@ const commandService = {
             msg.channel.send("Try `sudo`");
             return;
         }
-        if(Math.random() > 0.1){
+        if(Math.random() <= 0.1){
             msg.channel.send("You don't own me bitch");
             return;
         }

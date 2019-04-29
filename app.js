@@ -88,7 +88,7 @@ client.on('message', msg => {
 });
 
 client.on("guildMemberAdd", (member) => {
-  client.channels.find("name", "general").send("<@${member.id}> Welcome, ${member.username}, to the programming chat. Please introduce yourself after joining. This includes age and location (if you are comfortable with sharing that), favorite languages and frameworks, a few recent and past projects (if you have any you want to share), github profiles, personal websites, etc., and anything else that you want us to know about you. Also please tell us who recruited you into the chat. Thanks!");
+  client.channels.find("name", "general").send(`<@${member.user.id}> Welcome, ${member.user.username}, to the programming chat. Please introduce yourself after joining. This includes age and location (if you are comfortable with sharing that), favorite languages and frameworks, a few recent and past projects (if you have any you want to share), github profiles, personal websites, etc., and anything else that you want us to know about you. Also please tell us who recruited you into the chat. Thanks!`);
 });
 
 client.on('guildCreate', guild => {
