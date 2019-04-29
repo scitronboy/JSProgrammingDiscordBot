@@ -62,6 +62,30 @@
       "ignore": false,
       "permissions": ["all"]
     },
+    "shutup": {
+      "name": "shutup",
+      "args": [
+        "person", "durationSeconds"
+      ],
+      "description": "Shut <person> up for <durationSeconds> seconds.",
+      "shortcuts": [
+        "shutup", "mute"
+      ],
+      "ignore": false,
+      "permissions": ["admin"]
+    },
+    "unmute": {
+      "name": "unmute",
+      "args": [
+        "person"
+      ],
+      "description": "Unmute (un-shutup) <person>",
+      "shortcuts": [
+        "unshutup", "unmute"
+      ],
+      "ignore": false,
+      "permissions": ["admin"]
+    },
     "joke": {
       "name": "joke",
       "args": [],

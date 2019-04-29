@@ -4,6 +4,7 @@ const config = require('./config/config.json');
 const lang = require('./config/lang.json');
 const commands = require('./services/commandService.js').commands;
 const utils = require('./utils/botutils.js');
+const userUtils = require('./utils/userUtils.js');
 const client = new Discord.Client();
 const request = require('request');
 
@@ -59,6 +60,10 @@ client.on('ready', () => {
 
 client.on('message', msg => {
     if (!acceptMessages || msg.author.bot || !canReply(msg)) {
+        return;
+    }
+    if (userUtils.userMuted(msg.author.id)) {
+        msg.delete(0); // Delete message if user is muted
         return;
     }
     if(!utils.validateMsg(msg.content)){

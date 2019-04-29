@@ -2,6 +2,7 @@ const request = require('request');
 const config = require('../config/config');
 const cheerio = require('cheerio');
 const utils = require('../utils/botutils');
+const userUtils = require('../utils/userUtils');
 const lang = require('../config/lang.json');
 const DataSystem = require('../utils/fileUtils');
 
@@ -89,6 +90,42 @@ const commandService = {
             await msg.guild.members.get(person.id).setNickname(old_nicname);
         },300000);
 
+    },
+    shutup: (msg, args, client, sudo) => {
+        if (!sudo) {
+            msg.channel.send("No. Not without sudo.")
+            return;
+        }
+        if (args.length < 2) {
+            msg.channel.send("You idiot. Ya don't even know how to use the command properly.");
+            return;
+        }
+        if(Math.random() > 0.1){
+            msg.channel.send("Will I listen to you :thinking: ? No... I don't think I will.... :smiling_imp:");
+            return;
+        }
+        var userToMute = msg.mentions.members.first();
+        msg.channel.send("Sorry, <@${userToMute.username}>, you have been shut up for ${args[1]} minutes. You will find that your messages will evaporate upon being sent.");
+        
+        userUtils.shutupUser(userToMute.id, args[1]);
+    },
+    unmute: (msg, args, client, sudo) => {
+        if (!sudo) {
+            msg.channel.send("I refuse, unless you use sudo.")
+            return;
+        }
+        if (args.length < 1) {
+            msg.channel.send("You idiot. Ya gotta tell me _who_ to unmute. duh!");
+            return;
+        }
+        if(Math.random() > 0.1){
+            msg.channel.send("Will I listen to you :thinking: ? No... I don't think I will.... :smiling_imp:");
+            return;
+        }
+        var userToUnmute = msg.mentions.members.first();
+        msg.channel.send("<@${userToMute.username}>, you have been unmuted. Enjoy some freedom!");
+        
+        userUtils.unmuteUser(userToUnmute.id);
     },
     joke: (msg, args, client, sudo) => {
         if (Math.random() <= 0.1 && args !== "bypass") {
