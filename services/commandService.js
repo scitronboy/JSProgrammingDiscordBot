@@ -3,7 +3,7 @@ const config = require('../config/config');
 const cheerio = require('cheerio');
 const utils = require('../utils/botutils');
 const lang = require('../config/lang.json');
-const DataSystem = require('./utils/fileUtils');
+const DataSystem = require('../utils/fileUtils');
 
 let data = new DataSystem({
     data_file: '../data/data.json',
