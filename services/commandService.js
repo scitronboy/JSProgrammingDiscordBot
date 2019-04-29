@@ -105,7 +105,7 @@ const commandService = {
             return;
         }
         var userToMute = msg.mentions.members.first();
-        msg.channel.send("Sorry, <@${userToMute.username}>, you have been shut up for ${args[1]} minutes. You will find that your messages will evaporate upon being sent.");
+        msg.channel.send(`Sorry, <@${userToMute.username}>, you have been shut up for ${args[1]} minutes. You will find that your messages will evaporate upon being sent.`);
         
         userUtils.shutupUser(userToMute.id, args[1]);
     },
@@ -123,7 +123,7 @@ const commandService = {
             return;
         }
         var userToUnmute = msg.mentions.members.first();
-        msg.channel.send("<@${userToMute.username}>, you have been unmuted. Enjoy some freedom!");
+        msg.channel.send(`<@${userToMute.username}>, you have been unmuted.`);
         
         userUtils.unmuteUser(userToUnmute.id);
     },
