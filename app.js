@@ -61,6 +61,10 @@ client.on('message', msg => {
     if (!acceptMessages || msg.author.bot || !canReply(msg)) {
         return;
     }
+    if(!utils.validateMsg(msg.content)){
+        msg.channel.send('You sick bastard. Stop trying to hack me!');
+        return;
+    }
     if(!utils.isCommandMsg(msg)){ /* is a command */
         if(msg.content.toLowerCase().includes("java") &&  Date.now() - lastJavaSucks > 600000){
             lastJavaSucks = Date.now();

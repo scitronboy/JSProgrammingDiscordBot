@@ -53,6 +53,9 @@ function getCommand(str) {
     }
     return false;
 }
+function validateMsg(str) {
+    return true;
+}
 
 module.exports = {
     isCommand,
@@ -60,5 +63,6 @@ module.exports = {
     isCommandPrefix,
     format,
     getCommand,
-    permissionCheck
+    permissionCheck,
+    validateMsg
 };

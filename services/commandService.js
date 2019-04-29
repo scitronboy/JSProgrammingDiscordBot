@@ -21,11 +21,13 @@ const commandService = {
             msg.channel.send("**Missing args**");
             return;
         }
+        console.log('https://www.google.com/search?q=' + encodeURI(args.join(" ")) + "%20site:developer.mozilla.org");
         request('https://www.google.com/search?q=' + args.join("%20") + "%20site:developer.mozilla.org", (err, res, body) => {
-            const $ = cheerio.load(body);
             try {
+                const $ = cheerio.load(body);
                 msg.channel.send($('.r').find('a').attr('href').replace('/url?q=', '').replace(/&sa=.*/, ''));
             } catch (e) {
+                msg.channel.send('An error occured with the request. Are you fucking with me?');
                 console.error(e);
             }
         });
